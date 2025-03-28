@@ -16,9 +16,11 @@ def home():
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
     try:
-        if 'file' not in request.files:
-            return jsonify({"error": "No audio file provided."}), 400
-
+        global model
+        if model is None:
+            model = whisper.load_model("base")
+        
+        # ...continue with file saving and transcription
         file = request.files['file']
         filename = f"temp_{uuid.uuid4()}.wav"
         file.save(filename)
