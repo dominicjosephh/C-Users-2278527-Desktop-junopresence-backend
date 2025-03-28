@@ -5,7 +5,7 @@ import os
 import uuid
 
 app = Flask(__name__)
-model = whisper.load_model("base")
+model = none
 session_history = {}
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
